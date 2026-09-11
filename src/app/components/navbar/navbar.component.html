@@ -1,0 +1,63 @@
+<nav class="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-peach shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a routerLink="/" class="flex items-center gap-2">
+        <span class="text-2xl">🧶</span>
+        <span class="font-display text-xl font-bold text-bark">
+          Fio <span class="text-caramel">&amp;</span> Arte
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+           class="nav-link font-body text-sm font-medium text-bark hover:text-caramel transition-colors">
+          Home
+        </a>
+        <a routerLink="/galeria" routerLinkActive="active"
+           class="nav-link font-body text-sm font-medium text-bark hover:text-caramel transition-colors">
+          Galeria
+        </a>
+        <a href="https://wa.me/5511999999999" target="_blank"
+           class="bg-caramel hover:bg-terracota text-cream text-sm font-medium px-4 py-2 rounded-full transition-colors">
+          Fale Conosco
+        </a>
+      </div>
+
+      <!-- Hamburger -->
+      <button (click)="toggleMenu()" class="md:hidden p-2 text-bark" aria-label="Menu">
+        @if (!menuOpen()) {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        } @else {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        }
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    @if (menuOpen()) {
+      <div class="md:hidden border-t border-peach">
+        <div class="flex flex-col gap-1 py-3 px-2">
+          <a routerLink="/" (click)="closeMenu()"
+             class="py-2 px-3 rounded-lg text-sm font-medium text-bark hover:bg-peach transition-colors">
+            Home
+          </a>
+          <a routerLink="/galeria" (click)="closeMenu()"
+             class="py-2 px-3 rounded-lg text-sm font-medium text-bark hover:bg-peach transition-colors">
+            Galeria
+          </a>
+          <a href="https://wa.me/5511999999999" target="_blank"
+             class="mt-2 text-center bg-caramel text-cream text-sm font-medium px-4 py-2 rounded-full">
+            Fale Conosco
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+</nav>

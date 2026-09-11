@@ -1,0 +1,73 @@
+<!-- ── GALLERY HEADER ─────────────────────────────────────── -->
+<section class="hero-pattern py-20 text-center">
+  <div class="max-w-2xl mx-auto px-4">
+    <span class="text-caramel text-xs font-semibold uppercase tracking-widest">Catálogo 2025</span>
+    <h1 class="font-display text-4xl sm:text-5xl font-bold text-bark mt-3 mb-4">Nossas Peças</h1>
+    <p class="text-muted text-lg leading-relaxed">
+      Cada item desta galeria carrega horas de dedicação, amor pelo ofício e a textura única do trabalho artesanal.
+      Encontre a peça que fala com você.
+    </p>
+  </div>
+</section>
+
+<!-- ── PRODUCT GRID ───────────────────────────────────────── -->
+<section class="py-16 bg-cream">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+      @for (produto of produtos; track produto.id) {
+        <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm border border-peach/60">
+
+          <!-- Imagem -->
+          <div class="relative aspect-square overflow-hidden bg-peach/30">
+            <img
+              [src]="produto.imagem"
+              [alt]="produto.nome"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-3 right-3 bg-cream/90 text-muted text-xs font-medium px-2 py-0.5 rounded-full">
+              {{ produto.categoria }}
+            </span>
+          </div>
+
+          <!-- Info -->
+          <div class="p-4">
+            <h3 class="font-display text-sm font-semibold text-bark mb-0.5">{{ produto.nome }}</h3>
+            <p class="text-caramel font-semibold text-sm mb-3">{{ produto.preco }}</p>
+            <a
+              [href]="getWhatsappUrl(produto)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full text-center bg-caramel hover:bg-terracota text-cream text-xs font-semibold py-2.5 rounded-full transition-all duration-200"
+            >
+              💬 Tenho Interesse
+            </a>
+          </div>
+
+        </div>
+      }
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CUSTOM ORDER BANNER ───────────────────────────────── -->
+<section class="bg-bark py-16">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <span class="text-4xl mb-4 block">🎁</span>
+    <h2 class="font-display text-2xl sm:text-3xl font-bold text-cream mb-3">
+      Quer uma peça personalizada?
+    </h2>
+    <p class="text-cream/60 text-base mb-8">
+      Encomendas sob medida são bem-vindas! Escolha cor, tamanho e modelo — criamos juntas.
+    </p>
+    <a
+      href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20encomendar%20uma%20peça%20personalizada."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block bg-caramel hover:bg-terracota text-cream font-semibold px-8 py-3.5 rounded-full text-sm transition-all shadow-lg shadow-black/20 hover:-translate-y-0.5"
+    >
+      Solicitar Encomenda no WhatsApp
+    </a>
+  </div>
+</section>
