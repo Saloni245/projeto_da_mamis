@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { AnalyticsService } from '../../services/analytics.service';
 
 export interface Product {
   id: number;
@@ -16,6 +16,7 @@ export interface Product {
   templateUrl: './gallery.component.html',
 })
 export class GalleryComponent {
+  private analytics = inject(AnalyticsService);
 
   produtos: Product[] = [
     {
@@ -92,6 +93,17 @@ export class GalleryComponent {
 
   getWhatsappUrl(produto: Product): string {
     const msg = `Olá! Tenho interesse na peça: ${produto.nome} (${produto.preco})`;
-    return `https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`;
+    return `https://wa.me/5511974169141?text=${encodeURIComponent(msg)}`;
+  }
+
+  onWhatsAppClick(produto: Product): void {
+    this.analytics.trackWhatsAppClick(produto.nome, produto.preco, produto.categoria);
+  }
+
+  onCustomOrderClick(): void {
+    this.analytics.trackEvent('whatsapp_click', {
+      button_location: 'gallery_custom_order',
+      timestamp: new Date().toISOString(),
+    });
   }
 }

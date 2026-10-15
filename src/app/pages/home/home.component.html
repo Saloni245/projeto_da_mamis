@@ -100,6 +100,7 @@
             <h3 class="font-display text-base font-semibold text-bark mb-1">{{ produto.nome }}</h3>
             <p class="text-caramel font-semibold text-sm mb-4">{{ produto.preco }}</p>
             <a [href]="getWhatsappUrl(produto.nome)" target="_blank"
+               (click)="onWhatsAppClick(produto)"
                class="block w-full text-center bg-peach hover:bg-caramel hover:text-cream text-bark text-sm font-semibold py-2.5 rounded-full transition-all duration-200">
               Tenho Interesse
             </a>
@@ -160,7 +161,8 @@
          class="inline-block text-center bg-caramel hover:bg-terracota text-cream font-semibold px-8 py-3.5 rounded-full text-sm transition-all shadow-lg shadow-caramel/20 hover:-translate-y-0.5">
         Explorar Galeria
       </a>
-      <a href="https://wa.me/5511999999999" target="_blank"
+      <a href="https://wa.me/5511974169141" target="_blank"
+         (click)="onGeneralWhatsAppClick('home_bottom_cta')"
          class="inline-block text-center border border-caramel text-caramel hover:bg-peach font-semibold px-8 py-3.5 rounded-full text-sm transition-colors">
         💬 WhatsApp
       </a>

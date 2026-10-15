@@ -36,6 +36,7 @@
             <p class="text-caramel font-semibold text-sm mb-3">{{ produto.preco }}</p>
             <a
               [href]="getWhatsappUrl(produto)"
+              (click)="onWhatsAppClick(produto)"
               target="_blank"
               rel="noopener noreferrer"
               class="block w-full text-center bg-caramel hover:bg-terracota text-cream text-xs font-semibold py-2.5 rounded-full transition-all duration-200"
@@ -62,7 +63,8 @@
       Encomendas sob medida são bem-vindas! Escolha cor, tamanho e modelo — criamos juntas.
     </p>
     <a
-      href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20encomendar%20uma%20peça%20personalizada."
+      href="https://wa.me/5511974169141?text=Olá!%20Gostaria%20de%20encomendar%20uma%20peça%20personalizada."
+      (click)="onCustomOrderClick()"
       target="_blank"
       rel="noopener noreferrer"
       class="inline-block bg-caramel hover:bg-terracota text-cream font-semibold px-8 py-3.5 rounded-full text-sm transition-all shadow-lg shadow-black/20 hover:-translate-y-0.5"

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { AnalyticsService } from '../../services/analytics.service';
 
 export interface Product {
   id: number;
@@ -24,6 +24,7 @@ export interface Testimonial {
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
+  private analytics = inject(AnalyticsService);
 
   diferenciais = [
     {
@@ -89,6 +90,17 @@ export class HomeComponent {
   ];
 
   getWhatsappUrl(produto: string): string {
-    return `https://wa.me/5511999999999?text=Olá!%20Tenho%20interesse%20na%20peça%3A%20${encodeURIComponent(produto)}`;
+    return `https://wa.me/5511974169141?text=Olá!%20Tenho%20interesse%20na%20peça%3A%20${encodeURIComponent(produto)}`;
+  }
+
+  onWhatsAppClick(produto: Product): void {
+    this.analytics.trackWhatsAppClick(produto.nome, produto.preco, produto.tag || 'Destaque');
+  }
+
+  onGeneralWhatsAppClick(location: string): void {
+    this.analytics.trackEvent('whatsapp_click', {
+      button_location: location,
+      timestamp: new Date().toISOString(),
+    });
   }
 }
