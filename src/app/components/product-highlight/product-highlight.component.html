@@ -1,0 +1,230 @@
+@if (currentBoneca(); as boneca) {
+  <div
+    [class]="isModal()
+      ? 'fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-bark/70 backdrop-blur-sm overflow-y-auto animate-fadeIn'
+      : 'w-full'"
+    (click)="isModal() ? onClose() : null"
+  >
+    <div
+      [class]="isModal()
+        ? 'relative w-full max-w-5xl bg-cream rounded-3xl shadow-2xl border border-peach overflow-hidden my-auto max-h-[92vh] overflow-y-auto'
+        : 'w-full bg-white rounded-3xl shadow-md border border-peach/80 overflow-hidden'"
+      (click)="$event.stopPropagation()"
+    >
+      <!-- Botão Fechar (apenas modo Modal) -->
+      @if (isModal()) {
+        <button
+          type="button"
+          (click)="onClose()"
+          aria-label="Fechar detalhes da peça"
+          class="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-cream/90 hover:bg-caramel text-bark hover:text-cream flex items-center justify-center shadow-md transition-colors cursor-pointer"
+        >
+          ✕
+        </button>
+      }
+
+      <!-- Barra Seletora de Bonecas (quando houver mais de uma opção na lista) -->
+      @if (bonecas().length > 1) {
+        <div class="bg-peach/45 border-b border-peach px-4 sm:px-8 py-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <span class="text-xs font-semibold uppercase tracking-widest text-terracota flex items-center gap-1.5">
+              <span>✨</span> Escolha a boneca para ver todos os ângulos:
+            </span>
+            <div class="flex flex-wrap gap-2">
+              @for (item of bonecas(); track item.id) {
+                <button
+                  type="button"
+                  (click)="selectBoneca(item)"
+                  [class]="item.id === boneca.id
+                    ? 'bg-caramel text-cream font-semibold text-xs px-3.5 py-2 rounded-full shadow-sm transition-all cursor-pointer'
+                    : 'bg-cream hover:bg-peach text-bark text-xs font-medium px-3.5 py-2 rounded-full border border-peach transition-all cursor-pointer'"
+                >
+                  {{ item.nome.replace('Boneca Fofucha — ', '') }}
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Conteúdo Principal: Foto + Miniaturas de um lado, Informações + Contato do outro -->
+      <div class="grid md:grid-cols-12 gap-6 lg:gap-10 p-5 sm:p-8 lg:p-10 items-start">
+
+        <!-- COLUNA ESQUERDA: Foto Principal + O Restante das Fotos (Frente, Perfil, Costas) -->
+        <div class="md:col-span-6 lg:col-span-6 flex flex-col gap-4">
+          @if (currentPhoto(); as fotoAtiva) {
+            <!-- Moldura da Foto Principal -->
+            <div class="relative aspect-square w-full rounded-2xl overflow-hidden bg-peach/30 border border-peach/60 shadow-inner group">
+              <img
+                [src]="fotoAtiva.url"
+                [alt]="boneca.nome + ' - ' + fotoAtiva.angulo"
+                class="w-full h-full object-cover transition-all duration-500"
+              />
+
+              <!-- Badge do Ângulo Atual -->
+              <div class="absolute top-3 left-3 bg-bark/80 backdrop-blur-xs text-cream text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+                <span>📷</span>
+                <span>Ângulo: {{ fotoAtiva.angulo }}</span>
+                <span class="text-cream/70">({{ activePhotoIndex() + 1 }}/{{ boneca.fotos.length }})</span>
+              </div>
+
+              <!-- Setas Anterior / Próxima Foto -->
+              @if (boneca.fotos.length > 1) {
+                <button
+                  type="button"
+                  (click)="prevPhoto()"
+                  aria-label="Foto anterior"
+                  class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-cream/90 hover:bg-caramel text-bark hover:text-cream flex items-center justify-center shadow-md transition-all cursor-pointer"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  (click)="nextPhoto()"
+                  aria-label="Próxima foto"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-cream/90 hover:bg-caramel text-bark hover:text-cream flex items-center justify-center shadow-md transition-all cursor-pointer"
+                >
+                  ›
+                </button>
+              }
+
+              <!-- Legenda inferior da foto -->
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-bark/80 via-bark/40 to-transparent p-4 pt-8">
+                <p class="text-cream text-xs sm:text-sm font-medium">
+                  {{ fotoAtiva.legenda }}
+                </p>
+              </div>
+            </div>
+          }
+
+          <!-- Galeria com o restante das fotos da boneca (Frente, Perfil, Costas) -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-muted">
+                Veja todos os ângulos desta peça ({{ boneca.fotos.length }} fotos):
+              </span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+              @for (foto of boneca.fotos; track foto.url; let idx = $index) {
+                <button
+                  type="button"
+                  (click)="selectPhoto(idx)"
+                  [class]="idx === activePhotoIndex()
+                    ? 'relative rounded-xl overflow-hidden border-2 border-caramel ring-2 ring-caramel/30 shadow-md transition-all cursor-pointer group'
+                    : 'relative rounded-xl overflow-hidden border border-peach opacity-75 hover:opacity-100 transition-all cursor-pointer group'"
+                >
+                  <div class="aspect-square w-full bg-peach/20">
+                    <img
+                      [src]="foto.url"
+                      [alt]="boneca.nome + ' - ' + foto.angulo"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div
+                    [class]="idx === activePhotoIndex()
+                      ? 'bg-caramel text-cream text-xs font-semibold py-1.5 text-center'
+                      : 'bg-cream/95 text-bark text-xs font-medium py-1.5 text-center'"
+                  >
+                    {{ foto.angulo }}
+                  </div>
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUNA DIREITA: Detalhes da Peça + Botão de Contato Abaixo -->
+        <div class="md:col-span-6 lg:col-span-6 flex flex-col justify-between h-full">
+          <div>
+            <!-- Badges de Categoria e Disponibilidade (Sem Preço) -->
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="bg-caramel/15 text-terracota text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
+                {{ boneca.categoria }}
+              </span>
+              <span class="bg-peach text-bark text-xs font-semibold px-3 py-1 rounded-full">
+                ✦ {{ boneca.tag }}
+              </span>
+              <span class="bg-cream border border-peach text-muted text-xs font-medium px-3 py-1 rounded-full">
+                {{ boneca.disponibilidade }}
+              </span>
+            </div>
+
+            <!-- Nome e Subtítulo da Boneca -->
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-bark leading-snug mb-2">
+              {{ boneca.nome }}
+            </h3>
+            <p class="text-caramel font-medium text-sm sm:text-base mb-4">
+              {{ boneca.subtitulo }}
+            </p>
+
+            <!-- Descrição -->
+            <p class="text-bark/80 text-sm sm:text-base leading-relaxed mb-6">
+              {{ boneca.descricao }}
+            </p>
+
+            <!-- Lista de Detalhes e Diferenciais da Boneca -->
+            <div class="bg-cream/70 rounded-2xl p-4 sm:p-5 border border-peach/80 mb-6">
+              <h4 class="font-display text-sm font-semibold text-bark mb-3 flex items-center gap-2">
+                <span>🪡</span> Detalhes do Acabamento Artesanal:
+              </h4>
+              <ul class="space-y-2">
+                @for (detalhe of boneca.detalhes; track detalhe) {
+                  <li class="flex items-start gap-2.5 text-xs sm:text-sm text-bark/85">
+                    <span class="text-caramel font-bold mt-0.5">✓</span>
+                    <span>{{ detalhe }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+
+            <!-- Seletor rápido de ângulos em botões -->
+            <div class="mb-6">
+              <span class="text-xs font-medium text-muted block mb-2">Alternar visualização rápida:</span>
+              <div class="flex flex-wrap gap-2">
+                @for (foto of boneca.fotos; track foto.url; let idx = $index) {
+                  <button
+                    type="button"
+                    (click)="selectPhoto(idx)"
+                    [class]="idx === activePhotoIndex()
+                      ? 'bg-bark text-cream text-xs font-semibold px-4 py-2 rounded-full transition-colors cursor-pointer'
+                      : 'bg-peach/60 hover:bg-peach text-bark text-xs font-medium px-4 py-2 rounded-full transition-colors cursor-pointer'"
+                  >
+                    🔍 Ver {{ foto.angulo }}
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- BLOCO INFERIOR: Botão de Contato (Substituindo o Preço) -->
+          <div class="pt-4 border-t border-peach">
+            <div class="bg-peach/40 rounded-2xl p-4 mb-4 flex items-center justify-between">
+              <div>
+                <span class="text-xs uppercase tracking-wider text-muted font-semibold block">Peça Exclusiva sob Encomenda</span>
+                <span class="text-sm font-semibold text-bark">Personalize cores, roupinha e detalhes diretamente conosco</span>
+              </div>
+              <span class="text-2xl">🧶</span>
+            </div>
+
+            <a
+              [href]="getWhatsappUrl(boneca)"
+              (click)="onContactClick(boneca)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center gap-2 w-full bg-caramel hover:bg-terracota text-cream font-semibold text-sm sm:text-base py-4 px-6 rounded-full shadow-lg shadow-caramel/25 hover:shadow-terracota/30 hover:-translate-y-0.5 transition-all duration-200 text-center"
+            >
+              <span>💬</span>
+              <span>Entrar em Contato sobre esta Boneca</span>
+            </a>
+            <p class="text-center text-muted text-xs mt-2.5">
+              Atendimento direto pelo WhatsApp para consultar disponibilidade e encomendas.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+}
+

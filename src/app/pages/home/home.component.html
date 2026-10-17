@@ -1,30 +1,30 @@
 <!-- ── HERO ──────────────────────────────────────────────── -->
-<section class="hero-pattern min-h-[90vh] flex items-center relative overflow-hidden">
+<section class="hero-pattern min-h-[88vh] flex items-center relative overflow-hidden">
   <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-peach/40 blur-3xl pointer-events-none"></div>
   <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-caramel/10 blur-3xl pointer-events-none"></div>
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid md:grid-cols-2 gap-12 items-center">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid md:grid-cols-2 gap-12 items-center">
     <div>
       <span class="inline-block bg-peach text-terracota text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-6">
-        ✦ Artesanato com alma
+        ✦ Ateliê Fio &amp; Arte — Feito à mão
       </span>
       <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-bark leading-tight mb-6">
-        Cada ponto,<br/>
+        Cada detalhe,<br/>
         <em class="text-caramel not-italic">uma história</em><br/>
-        tecida à mão.
+        criada com amor.
       </h1>
       <p class="text-muted text-lg leading-relaxed mb-10 max-w-md">
-        Peças únicas de crochê feitas com amor, materiais sustentáveis e técnicas passadas de geração em geração.
-        Não é moda — é memória afetiva.
+        Bonecas artesanais e criações exclusivas feitas à mão com acabamento delicado.
+        Peças únicas pensadas para encantar, decorar e presentear quem você ama.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a routerLink="/galeria"
            class="inline-block text-center bg-caramel hover:bg-terracota text-cream font-semibold px-7 py-3.5 rounded-full text-sm transition-all duration-200 shadow-lg shadow-caramel/20 hover:shadow-terracota/20 hover:-translate-y-0.5">
-          Ver Catálogo Completo →
+          Ver Catálogo de Bonecas →
         </a>
-        <a href="#diferenciais"
+        <a href="#destaque-atelie"
            class="inline-block text-center border border-caramel text-caramel hover:bg-peach font-semibold px-7 py-3.5 rounded-full text-sm transition-colors">
-          Nossos Diferenciais
+          Ver Destaque em 360°
         </a>
       </div>
     </div>
@@ -33,15 +33,15 @@
       <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
         <div class="absolute inset-0 rounded-[40%_60%_60%_40%/60%_40%_60%_40%] bg-peach rotate-6"></div>
         <img
-          src="https://images.unsplash.com/photo-1558171813-7e15b4a0d1a6?w=600&q=80"
-          alt="Peças de crochê artesanal"
-          class="absolute inset-0 w-full h-full object-cover rounded-[40%_60%_60%_40%/60%_40%_60%_40%] shadow-2xl"
+          src="/images/bonecas/boneca-azul-xadrez-frente.jpeg"
+          alt="Boneca Fofucha Artesanal do Ateliê"
+          class="absolute inset-0 w-full h-full object-cover rounded-[40%_60%_60%_40%/60%_40%_60%_40%] shadow-2xl border-4 border-cream"
         />
-        <div class="absolute -bottom-4 -left-4 bg-cream rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
+        <div class="absolute -bottom-4 -left-4 bg-cream rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 border border-peach">
           <span class="text-2xl">🧶</span>
           <div>
             <div class="text-xs text-muted font-medium">100% Artesanal</div>
-            <div class="text-sm font-semibold text-bark">Desde 2015</div>
+            <div class="text-sm font-semibold text-bark">Feito com Carinho</div>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@
 <section id="diferenciais" class="bg-peach py-20">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <span class="text-caramel text-xs font-semibold uppercase tracking-widest">Por que escolher Fio &amp; Arte</span>
+      <span class="text-caramel text-xs font-semibold uppercase tracking-widest">Por que escolher nosso Ateliê</span>
       <h2 class="font-display text-3xl sm:text-4xl font-bold text-bark mt-2">O valor do que é feito à mão</h2>
     </div>
 
@@ -71,38 +71,120 @@
   </div>
 </section>
 
-<!-- ── SNEAK PEEK ─────────────────────────────────────────── -->
+<!-- ── NOVO COMPONENTE DE DESTAQUE DO ITEM CADASTRADO ────── -->
+<section id="destaque-atelie" class="py-20 bg-cream border-b border-peach/60">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="inline-block bg-peach text-terracota text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-3">
+        ✦ Vitrine em Destaque
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-bark">
+        Conheça cada detalhe das nossas Bonecas
+      </h2>
+      <p class="text-muted text-sm sm:text-base mt-2">
+        Alterne entre as bonecas cadastradas e veja todas as fotos de <strong>Frente</strong>, <strong>Perfil</strong> e <strong>Costas</strong> antes de entrar em contato.
+      </p>
+    </div>
+
+    <app-product-highlight
+      [bonecas]="featuredProducts"
+      [bonecaSelecionada]="selectedForHighlight()"
+    />
+  </div>
+</section>
+
+<!-- ── CATÁLOGO DE BONECAS NA HOME (CARDS COM FOTOS E CONTATO) ── -->
 <section class="py-20 bg-cream">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
       <div>
-        <span class="text-caramel text-xs font-semibold uppercase tracking-widest">Em destaque</span>
+        <span class="text-caramel text-xs font-semibold uppercase tracking-widest">Coleção Ateliê</span>
         <h2 class="font-display text-3xl sm:text-4xl font-bold text-bark mt-2">Peças que encantam</h2>
       </div>
       <a routerLink="/galeria" class="text-caramel font-semibold text-sm hover:text-terracota transition-colors self-start sm:self-auto flex items-center gap-1">
-        Ver tudo <span class="text-base">→</span>
+        Ver galeria completa <span class="text-base">→</span>
       </a>
     </div>
 
-    <div class="grid sm:grid-cols-3 gap-6">
-      @for (produto of featuredProducts; track produto.id) {
-        <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm border border-peach/60">
-          <div class="relative aspect-square overflow-hidden">
-            @if (produto.tag) {
-              <span class="absolute top-3 left-3 z-10 bg-caramel text-cream text-xs font-semibold px-2.5 py-1 rounded-full">
-                {{ produto.tag }}
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      @for (boneca of featuredProducts; track boneca.id) {
+        <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm border border-peach/60 flex flex-col justify-between">
+          <div>
+            <!-- Foto Principal do Card -->
+            <div
+              class="relative aspect-square overflow-hidden bg-peach/20 cursor-pointer group"
+              (click)="openModalHighlight(boneca)"
+            >
+              @if (boneca.tag) {
+                <span class="absolute top-3 left-3 z-10 bg-caramel text-cream text-xs font-semibold px-2.5 py-1 rounded-full shadow-xs">
+                  {{ boneca.tag }}
+                </span>
+              }
+              <span class="absolute top-3 right-3 z-10 bg-bark/75 text-cream text-[11px] font-medium px-2.5 py-1 rounded-full">
+                📷 {{ boneca.fotos.length }} fotos
               </span>
-            }
-            <img [src]="produto.imagem" [alt]="produto.nome"
-                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
+
+              <img
+                [src]="boneca.fotos[getCardPhotoIndex(boneca.id)]?.url || boneca.imagemCapa"
+                [alt]="boneca.nome"
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+
+            <!-- Miniaturas do Restante das Fotos (Frente, Perfil, Costas) -->
+            <div class="px-4 pt-3">
+              <div class="grid grid-cols-3 gap-2">
+                @for (foto of boneca.fotos; track foto.url; let idx = $index) {
+                  <button
+                    type="button"
+                    (click)="setCardPhotoIndex(boneca.id, idx, $event)"
+                    [class]="getCardPhotoIndex(boneca.id) === idx
+                      ? 'rounded-lg overflow-hidden border-2 border-caramel shadow-xs cursor-pointer transition-all'
+                      : 'rounded-lg overflow-hidden border border-peach opacity-70 hover:opacity-100 cursor-pointer transition-all'"
+                  >
+                    <img
+                      [src]="foto.url"
+                      [alt]="boneca.nome + ' - ' + foto.angulo"
+                      loading="lazy"
+                      class="w-full aspect-square object-cover"
+                    />
+                    <span class="block text-[10px] font-medium text-bark bg-cream/90 py-0.5 text-center">
+                      {{ foto.angulo }}
+                    </span>
+                  </button>
+                }
+              </div>
+            </div>
+
+            <!-- Título e Descrição Curta -->
+            <div class="p-4 pb-2">
+              <h3 class="font-display text-base font-semibold text-bark mb-1 leading-snug">
+                {{ boneca.nome }}
+              </h3>
+              <p class="text-muted text-xs leading-relaxed line-clamp-2 mb-3">
+                {{ boneca.subtitulo }}
+              </p>
+            </div>
           </div>
-          <div class="p-5">
-            <h3 class="font-display text-base font-semibold text-bark mb-1">{{ produto.nome }}</h3>
-            <p class="text-caramel font-semibold text-sm mb-4">{{ produto.preco }}</p>
-            <a [href]="getWhatsappUrl(produto.nome)" target="_blank"
-               (click)="onWhatsAppClick(produto)"
-               class="block w-full text-center bg-peach hover:bg-caramel hover:text-cream text-bark text-sm font-semibold py-2.5 rounded-full transition-all duration-200">
-              Tenho Interesse
+
+          <!-- Botões de Ação (Ver Destaque + Contato abaixo, sem preço) -->
+          <div class="p-4 pt-1 flex flex-col gap-2">
+            <button
+              type="button"
+              (click)="openModalHighlight(boneca)"
+              class="w-full text-center bg-cream hover:bg-peach text-bark text-xs font-semibold py-2 rounded-full border border-peach transition-colors cursor-pointer"
+            >
+              🔍 Ver Destaque &amp; Fotos
+            </button>
+            <a
+              [href]="getWhatsappUrl(boneca)"
+              target="_blank"
+              rel="noopener noreferrer"
+              (click)="onWhatsAppClick(boneca)"
+              class="block w-full text-center bg-caramel hover:bg-terracota text-cream text-xs font-semibold py-2.5 rounded-full transition-all duration-200 shadow-xs"
+            >
+              💬 Entrar em Contato
             </a>
           </div>
         </div>
@@ -154,7 +236,7 @@
       Pronta para ter uma peça só sua?
     </h2>
     <p class="text-muted text-base leading-relaxed mb-8">
-      Entre em contato pelo WhatsApp ou explore nossa galeria e escolha a peça perfeita para você ou para presentear alguém especial.
+      Entre em contato pelo WhatsApp ou explore nossa galeria e escolha a boneca perfeita para você ou para presentear alguém especial.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a routerLink="/galeria"
@@ -162,6 +244,7 @@
         Explorar Galeria
       </a>
       <a href="https://wa.me/5511974169141" target="_blank"
+         rel="noopener noreferrer"
          (click)="onGeneralWhatsAppClick('home_bottom_cta')"
          class="inline-block text-center border border-caramel text-caramel hover:bg-peach font-semibold px-8 py-3.5 rounded-full text-sm transition-colors">
         💬 WhatsApp
@@ -169,3 +252,12 @@
     </div>
   </div>
 </section>
+
+<!-- ── MODAL DE DESTAQUE (QUANDO O USUÁRIO CLICA EM UM CARD) ── -->
+@if (modalBoneca(); as bonecaModal) {
+  <app-product-highlight
+    [bonecaSelecionada]="bonecaModal"
+    [isModal]="true"
+    (closeModal)="closeModalHighlight()"
+  />
+}

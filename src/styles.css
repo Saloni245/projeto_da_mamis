@@ -2,11 +2,31 @@
 @import "tailwindcss";
 
 @theme {
+  --color-cream: #F7F0E6;
   --color-caramel: #C4956A;
-  --color-peach: #FFDAB9;
+  --color-terracota: #8B5E52;
+  --color-peach: #E8D5C4;
+  --color-bark: #4A3728;
+  --color-muted: #9C7B6E;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
 }
 
-/* O resto do seu CSS continua aqui... */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-bark);
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}
+
 /* ─── Crochet texture pattern (hero sections) ─── */
 .hero-pattern {
   background-color: #F7F0E6;
@@ -24,7 +44,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: theme('colors.caramel');
+  background: var(--color-caramel);
   transition: width 0.3s ease;
 }
 .nav-link:hover::after,
@@ -46,25 +66,31 @@
   content: '\201C';
   font-family: 'Playfair Display', serif;
   font-size: 5rem;
-  color: theme('colors.peach');
+  color: var(--color-peach);
   line-height: 0;
   position: absolute;
   top: 1.5rem;
   left: 1rem;
 }
 
-/* ─── Page fade-in ─── */
+/* ─── Animations ─── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
 }
 
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
   .product-card,
   .product-card:hover,
-  .nav-link::after {
+  .nav-link::after,
+  .animate-fadeIn {
     transition: none;
     transform: none;
+    animation: none;
   }
 }

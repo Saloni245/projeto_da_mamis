@@ -1,14 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AnalyticsService } from '../../services/analytics.service';
-
-export interface Product {
-  id: number;
-  nome: string;
-  preco: string;
-  imagem: string;
-  tag?: string;
-}
+import { Boneca, ProductService } from '../../services/product.service';
+import { ProductHighlightComponent } from '../../components/product-highlight/product-highlight.component';
 
 export interface Testimonial {
   nome: string;
@@ -20,51 +14,42 @@ export interface Testimonial {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ProductHighlightComponent],
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
   private analytics = inject(AnalyticsService);
+  private productService = inject(ProductService);
+
+  featuredProducts: Boneca[] = this.productService.getFeaturedBonecas();
+
+  /** Boneca ativa no componente de destaque da página */
+  selectedForHighlight = signal<Boneca | null>(this.featuredProducts[0] ?? null);
+
+  /** Boneca aberta em modo modal (ao clicar em um card para ampliar fotos) */
+  modalBoneca = signal<Boneca | null>(null);
+
+  /** Controle do ângulo selecionado em cada card individual */
+  cardPhotoIndex = signal<Record<string, number>>({});
 
   diferenciais = [
     {
       icon: '🤲',
       titulo: 'Feito à Mão',
-      descricao: 'Cada peça é tecida com agulhas e fios naturais. Nenhum tear, nenhuma máquina — apenas dedicação e técnica humana.',
+      descricao:
+        'Cada boneca e peça artesanal é modelada e costurada manualmente com riqueza de detalhes — dedicação e técnica humana em cada acabamento.',
     },
     {
-      icon: '🌿',
-      titulo: 'Material Sustentável',
-      descricao: 'Priorizamos fios de algodão orgânico, lã de ovinos criados em liberdade e corantes naturais sem químicos nocivos.',
+      icon: '🎀',
+      titulo: 'Acabamento Delicado',
+      descricao:
+        'Tecidos selecionados, rendas, fitas de cetim e aplicações artesanais pensadas para encantar de todos os ângulos.',
     },
     {
       icon: '✨',
       titulo: 'Designs Exclusivos',
-      descricao: 'Nossos modelos nascem de esboços próprios. Cada peça é um original — você não encontrará igual em nenhuma loja.',
-    },
-  ];
-
-  featuredProducts: Product[] = [
-    {
-      id: 1,
-      nome: 'Amigurumi Urso Mel',
-      preco: 'R$ 85,00',
-      imagem: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
-      tag: 'Mais vendido',
-    },
-    {
-      id: 2,
-      nome: 'Bolsa Boho Palha',
-      preco: 'R$ 130,00',
-      imagem: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&q=80',
-      tag: 'Novo',
-    },
-    {
-      id: 3,
-      nome: 'Manta Berçário Rosa',
-      preco: 'R$ 220,00',
-      imagem: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=400&q=80',
-      tag: 'Exclusivo',
+      descricao:
+        'Nossos modelos nascem no ateliê com combinações únicas de cores e estampas. Cada criação tem personalidade própria.',
     },
   ];
 
@@ -72,29 +57,54 @@ export class HomeComponent {
     {
       nome: 'Carla Mendonça',
       cidade: 'São Paulo, SP',
-      texto: 'Encomendei um amigurumi para o aniversário da minha filha e ela ficou apaixonada! A qualidade é incrível e chegou embalado com tanto carinho.',
+      texto:
+        'Encomendei uma boneca para o aniversário da minha filha e ela ficou apaixonada! O capricho no vestidinho e nos sapatinhos é incrível.',
       avatar: '👩',
     },
     {
       nome: 'Renata Oliveira',
       cidade: 'Campinas, SP',
-      texto: 'A manta que comprei é uma obra de arte. Cada detalhe é perfeito, a textura é deliciosa e combinei com toda a decoração do quarto. Super recomendo!',
+      texto:
+        'Cada detalhe é perfeito, desde o laço no cabelo até o acabamento nas costas. Ficou linda na decoração do quarto. Super recomendo!',
       avatar: '👩‍🦰',
     },
     {
       nome: 'Juliana Costa',
       cidade: 'Rio de Janeiro, RJ',
-      texto: 'Atendimento maravilhoso e produto ainda melhor. A bolsa boho é exatamente o que eu queria para o verão. Já estou planejando minha próxima encomenda!',
+      texto:
+        'Atendimento maravilhoso e trabalho impecável. Dá para sentir o carinho em cada detalhe da peça. Já estou planejando minha próxima encomenda!',
       avatar: '👩‍🦳',
     },
   ];
 
-  getWhatsappUrl(produto: string): string {
-    return `https://wa.me/5511974169141?text=Olá!%20Tenho%20interesse%20na%20peça%3A%20${encodeURIComponent(produto)}`;
+  getCardPhotoIndex(bonecaId: string): number {
+    return this.cardPhotoIndex()[bonecaId] ?? 0;
   }
 
-  onWhatsAppClick(produto: Product): void {
-    this.analytics.trackWhatsAppClick(produto.nome, produto.preco, produto.tag || 'Destaque');
+  setCardPhotoIndex(bonecaId: string, index: number, event: Event): void {
+    event.stopPropagation();
+    this.cardPhotoIndex.update(curr => ({ ...curr, [bonecaId]: index }));
+  }
+
+  openModalHighlight(boneca: Boneca): void {
+    this.modalBoneca.set(boneca);
+    this.analytics.trackEvent('open_product_highlight_modal', {
+      doll_id: boneca.id,
+      doll_name: boneca.nome,
+      source: 'home_card',
+    });
+  }
+
+  closeModalHighlight(): void {
+    this.modalBoneca.set(null);
+  }
+
+  getWhatsappUrl(boneca: Boneca): string {
+    return this.productService.getWhatsappUrl(boneca);
+  }
+
+  onWhatsAppClick(boneca: Boneca): void {
+    this.analytics.trackWhatsAppClick(boneca.nome, 'Sob consulta', boneca.tag || 'Destaque');
   }
 
   onGeneralWhatsAppClick(location: string): void {

@@ -1,0 +1,163 @@
+[
+  {
+    "id": "boneca-azul-xadrez",
+    "nome": "Boneca Fofucha — Vestido Azul & Xadrez",
+    "subtitulo": "Delicadeza em tons de azul com detalhes em corações e flor artesanal",
+    "categoria": "Bonecas Artesanais",
+    "tag": "Destaque",
+    "destaque": true,
+    "disponibilidade": "Sob encomenda",
+    "descricao": "Boneca artesanal modelada à mão com rico acabamento. Veste blusinha azul celeste com estampa de corações, saia sobreposta em tecido xadrez floral, flor de crochê na cintura, laço duplo no cabelo e sapatinhos rosa cintilantes adornados com coração azul.",
+    "detalhes": [
+      "Modelagem 100% artesanal feita à mão em cada detalhe",
+      "Vestido em camadas com tecido xadrez floral e aplicação em crochê",
+      "Meias com acabamento rendado e sapatinhos com brilho delicado",
+      "Acompanha base acrílica transparente para exposição perfeita"
+    ],
+    "imagemCapa": "/images/bonecas/boneca-azul-xadrez-frente.jpeg",
+    "fotos": [
+      {
+        "angulo": "Frente",
+        "legenda": "Visão frontal — detalhes do rosto, laço xadrez e flor na cintura",
+        "url": "/images/bonecas/boneca-azul-xadrez-frente.jpeg",
+        "driveId": "1qIPpCAg6OAmrvW70CUsRCNg8l92pZQGX",
+        "driveUrl": "https://drive.google.com/file/d/1qIPpCAg6OAmrvW70CUsRCNg8l92pZQGX/view"
+      },
+      {
+        "angulo": "Perfil",
+        "legenda": "Visão de perfil — penteado em coques e volume da saia",
+        "url": "/images/bonecas/boneca-azul-xadrez-perfil.jpeg",
+        "driveId": "1DtzAy-n49Nz29mKjnrHCR4d4Lt_EZCNf",
+        "driveUrl": "https://drive.google.com/file/d/1DtzAy-n49Nz29mKjnrHCR4d4Lt_EZCNf/view"
+      },
+      {
+        "angulo": "Costas",
+        "legenda": "Visão de costas — acabamento do penteado e laço",
+        "url": "/images/bonecas/boneca-azul-xadrez-costas.jpeg",
+        "driveId": "1GjeloYOAsPvE1yg_JX-XwfacCy-BFH3_",
+        "driveUrl": "https://drive.google.com/file/d/1GjeloYOAsPvE1yg_JX-XwfacCy-BFH3_/view"
+      }
+    ]
+  },
+  {
+    "id": "boneca-floral-poa",
+    "nome": "Boneca Fofucha — Vestido Floral & Poá",
+    "subtitulo": "Charme clássico com estampa de rosas e poá azul",
+    "categoria": "Bonecas Artesanais",
+    "tag": "Exclusivo",
+    "destaque": true,
+    "disponibilidade": "Sob encomenda",
+    "descricao": "Peça encantadora que combina o romantismo do tecido floral com a leveza do poá azul claro. Possui penteado esculpido com laço botânico combinando, meias com bordado inglês e sapatinhos rosa glitter com fitas de cetim.",
+    "detalhes": [
+      "Combinação harmônica de tecido floral botânico e poá azul",
+      "Laço superior confeccionado no mesmo tecido da saia",
+      "Sapatinhos em rosa glitter com amarração em fita de cetim",
+      "Base acrílica resistente inclusa"
+    ],
+    "imagemCapa": "/images/bonecas/boneca-floral-poa-frente.jpeg",
+    "fotos": [
+      {
+        "angulo": "Frente",
+        "legenda": "Visão frontal — vestido de poá azul com saia floral",
+        "url": "/images/bonecas/boneca-floral-poa-frente.jpeg",
+        "driveId": "10e9Pb5VTVrpfzyDlimAsFjFMpMWZrsAw",
+        "driveUrl": "https://drive.google.com/file/d/10e9Pb5VTVrpfzyDlimAsFjFMpMWZrsAw/view"
+      },
+      {
+        "angulo": "Perfil",
+        "legenda": "Visão de perfil — caimento da saia e detalhes laterais",
+        "url": "/images/bonecas/boneca-floral-poa-perfil.jpeg",
+        "driveId": "1S3ZV69KDBJlp6xi-hafU4scDqsp7HDy8",
+        "driveUrl": "https://drive.google.com/file/d/1S3ZV69KDBJlp6xi-hafU4scDqsp7HDy8/view"
+      },
+      {
+        "angulo": "Costas",
+        "legenda": "Visão de costas — simetria dos coques e acabamento traseiro",
+        "url": "/images/bonecas/boneca-floral-poa-costas.jpeg",
+        "driveId": "1tlI6BZYNfCPzhQjZ6a4T8BUXuC8y_l6U",
+        "driveUrl": "https://drive.google.com/file/d/1tlI6BZYNfCPzhQjZ6a4T8BUXuC8y_l6U/view"
+      }
+    ]
+  },
+  {
+    "id": "boneca-loira-verde",
+    "nome": "Boneca Fofucha — Loira Vestido Verde & Floral",
+    "subtitulo": "Tons campestres em verde musgo, amarelo pastel e flores",
+    "categoria": "Bonecas Artesanais",
+    "tag": "Novo",
+    "destaque": true,
+    "disponibilidade": "Sob encomenda",
+    "descricao": "Inspirada nas cores da natureza, esta boneca traz cabelos loiros modelados em tiras delicadas, vestido verde musgo com sobressaia floral em tons terrosos e sapatinhos amarelo pastel com laço de cetim verde escuro.",
+    "detalhes": [
+      "Cabelo loiro trabalhado artesanalmente em camadas",
+      "Vestido verde musgo com babados nas mangas e saia floral",
+      "Sapatinhos em tom amarelo suave com fita de cetim contrastante",
+      "Ideal para decoração de quartos infantis e presentes afetivos"
+    ],
+    "imagemCapa": "/images/bonecas/boneca-loira-verde-frente.jpeg",
+    "fotos": [
+      {
+        "angulo": "Frente",
+        "legenda": "Visão frontal — vestido verde musgo e sapatinhos amarelos",
+        "url": "/images/bonecas/boneca-loira-verde-frente.jpeg",
+        "driveId": "1zrNfxn_spEQ3hj9xJCtxe7Br43miEsqP",
+        "driveUrl": "https://drive.google.com/file/d/1zrNfxn_spEQ3hj9xJCtxe7Br43miEsqP/view"
+      },
+      {
+        "angulo": "Perfil",
+        "legenda": "Visão de perfil — textura dos cachos loiros e laço floral",
+        "url": "/images/bonecas/boneca-loira-verde-perfil.jpeg",
+        "driveId": "1WzdSFBfzZQ0ooLj7YiaQXzskfCS18OHn",
+        "driveUrl": "https://drive.google.com/file/d/1WzdSFBfzZQ0ooLj7YiaQXzskfCS18OHn/view"
+      },
+      {
+        "angulo": "Costas",
+        "legenda": "Visão de costas — laço traseiro da saia e penteado",
+        "url": "/images/bonecas/boneca-loira-verde-costas.jpeg",
+        "driveId": "1M121WvoBGBl1UMiuxcRdoZoobf3b3_CN",
+        "driveUrl": "https://drive.google.com/file/d/1M121WvoBGBl1UMiuxcRdoZoobf3b3_CN/view"
+      }
+    ]
+  },
+  {
+    "id": "boneca-lilas-floral",
+    "nome": "Boneca Fofucha — Vestido Lilás & Jardim",
+    "subtitulo": "Suavidade lavanda com estampa jardim encantado e brilho rosa",
+    "categoria": "Bonecas Artesanais",
+    "tag": "Feito à Mão",
+    "destaque": true,
+    "disponibilidade": "Sob encomenda",
+    "descricao": "Com paleta suave em tons de lilás e lavanda, esta peça destaca-se pela saia florida e laço coordenado no topo da cabeça. Possui anágua rendada aparente, meias com babado de renda e sapatinhos rosa com acabamento brilhante.",
+    "detalhes": [
+      "Vestido lilás com sobressaia floral em tons de violeta e rosa",
+      "Detalhe especial de renda delicada sob a barra do vestido",
+      "Sapatinhos estruturados com acabamento em glitter rosa",
+      "Peça única produzida manualmente no ateliê"
+    ],
+    "imagemCapa": "/images/bonecas/boneca-lilas-floral-frente.jpeg",
+    "fotos": [
+      {
+        "angulo": "Frente",
+        "legenda": "Visão frontal — vestido lilás floral e sapatinhos glitter",
+        "url": "/images/bonecas/boneca-lilas-floral-frente.jpeg",
+        "driveId": "1AMVZGsxOwG6Vf93cDOPZ_pOAu9VjdjzV",
+        "driveUrl": "https://drive.google.com/file/d/1AMVZGsxOwG6Vf93cDOPZ_pOAu9VjdjzV/view"
+      },
+      {
+        "angulo": "Perfil",
+        "legenda": "Visão de perfil — volume lateral e detalhes de renda",
+        "url": "/images/bonecas/boneca-lilas-floral-perfil.jpeg",
+        "driveId": "1fbe6puhWoLxr7_Cwv7oHZQCw-IVEaN91",
+        "driveUrl": "https://drive.google.com/file/d/1fbe6puhWoLxr7_Cwv7oHZQCw-IVEaN91/view"
+      },
+      {
+        "angulo": "Costas",
+        "legenda": "Visão de costas — acabamento dos coques castanhos e saia",
+        "url": "/images/bonecas/boneca-lilas-floral-costas.jpeg",
+        "driveId": "1K3rgMBdTc9A-dBGcrgXRrKFFanSd_18K",
+        "driveUrl": "https://drive.google.com/file/d/1K3rgMBdTc9A-dBGcrgXRrKFFanSd_18K/view"
+      }
+    ]
+  }
+]
+
