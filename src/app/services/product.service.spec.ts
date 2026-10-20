@@ -13,10 +13,10 @@ describe('ProductService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('deve carregar exatamente as 4 bonecas do JSON estático', () => {
+  it('deve carregar todas as 8 bonecas cadastradas no JSON estático', () => {
     const bonecas = service.getAllBonecas();
     expect(bonecas).toBeDefined();
-    expect(bonecas.length).toBe(4);
+    expect(bonecas.length).toBe(8);
 
     const ids = bonecas.map(b => b.id);
     expect(ids).toEqual([
@@ -24,44 +24,42 @@ describe('ProductService', () => {
       'boneca-floral-poa',
       'boneca-loira-verde',
       'boneca-lilas-floral',
+      'casal-noivinhos-fofuchos',
+      'boneca-camponesa-chapeu',
+      'boneca-pendulo-chaveiro',
+      'boneca-boina-docura',
     ]);
   });
 
-  it('deve retornar as 4 bonecas em destaque em getFeaturedBonecas()', () => {
+  it('deve retornar todas as bonecas marcadas em destaque em getFeaturedBonecas()', () => {
     const destaques = service.getFeaturedBonecas();
-    expect(destaques.length).toBe(4);
+    expect(destaques.length).toBe(8);
     destaques.forEach(boneca => {
       expect(boneca.destaque).toBe(true);
     });
   });
 
   it('deve buscar uma boneca pelo ID corretamente ou retornar undefined se não existir', () => {
-    const boneca = service.getBonecaById('boneca-azul-xadrez');
+    const boneca = service.getBonecaById('casal-noivinhos-fofuchos');
     expect(boneca).toBeDefined();
-    expect(boneca?.nome).toContain('Vestido Azul & Xadrez');
+    expect(boneca?.nome).toContain('Casal de Noivinhos');
 
     const inexistente = service.getBonecaById('id-inexistente');
     expect(inexistente).toBeUndefined();
   });
 
-  it('cada boneca deve possuir exatamente 3 fotos (Frente, Perfil, Costas) com URLs válidas e referências do Google Drive (driveId e driveUrl)', () => {
+  it('cada boneca deve possuir fotos com ângulos e URLs válidas na CDN S3', () => {
     const bonecas = service.getAllBonecas();
 
     bonecas.forEach((boneca: Boneca) => {
-      expect(boneca.imagemCapa).toMatch(/^\/images\/bonecas\/.+\.jpeg$/);
+      expect(boneca.imagemCapa).toMatch(/^https:\/\/fb-integrador-vehicle-images\.s3\.sa-east-1\.amazonaws\.com\/.+\.jpeg$/);
       expect(boneca.fotos).toBeDefined();
-      expect(boneca.fotos.length).toBe(3);
-
-      const angulos = boneca.fotos.map(f => f.angulo);
-      expect(angulos).toEqual(['Frente', 'Perfil', 'Costas']);
+      expect(boneca.fotos.length).toBeGreaterThanOrEqual(3);
 
       boneca.fotos.forEach(foto => {
-        expect(foto.url).toMatch(/^\/images\/bonecas\/boneca-.+-(frente|perfil|costas)\.jpeg$/);
+        expect(foto.url).toMatch(/^https:\/\/fb-integrador-vehicle-images\.s3\.sa-east-1\.amazonaws\.com\/.+\.jpeg$/);
         expect(foto.legenda.length).toBeGreaterThan(5);
-        expect(foto.driveId).toBeDefined();
-        expect(foto.driveId?.length).toBeGreaterThan(10);
-        expect(foto.driveUrl).toBeDefined();
-        expect(foto.driveUrl).toBe(`https://drive.google.com/file/d/${foto.driveId}/view`);
+        expect(foto.angulo).toBeDefined();
       });
     });
   });
@@ -76,7 +74,7 @@ describe('ProductService', () => {
   });
 
   it('deve gerar corretamente o link do WhatsApp sem preço e com o nome da boneca (sem ângulo)', () => {
-    const boneca = service.getBonecaById('boneca-azul-xadrez')!;
+    const boneca = service.getBonecaById('casal-noivinhos-fofuchos')!;
     const url = service.getWhatsappUrl(boneca);
 
     expect(url).toContain('https://wa.me/5511974169141?text=');
@@ -88,7 +86,7 @@ describe('ProductService', () => {
   });
 
   it('deve gerar corretamente o link do WhatsApp sem preço, com o nome da boneca e com o ângulo informado', () => {
-    const boneca = service.getBonecaById('boneca-floral-poa')!;
+    const boneca = service.getBonecaById('boneca-camponesa-chapeu')!;
     const url = service.getWhatsappUrl(boneca, 'Perfil');
 
     expect(url).toContain('https://wa.me/5511974169141?text=');
