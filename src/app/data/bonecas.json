@@ -308,5 +308,80 @@
         "url": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/54e3ff13-e018-412a-8460-f8a0733d8203.jpeg"
       }
     ]
+  },
+  {
+    "id": "jogo-mesa-posta-natalina",
+    "nome": "Jogo de Mesa Posta Natalina em Crochê — Caminho de Mesa & Sousplats",
+    "subtitulo": "Conjunto festivo completo em crochê com fio de brilho, caminho de mesa e sousplats florais",
+    "categoria": "Mesa Posta & Decoração",
+    "tag": "Especial de Natal",
+    "destaque": true,
+    "disponibilidade": "Sob encomenda",
+    "descricao": "Conjunto de mesa posta natalina confeccionado manualmente em crochê artesanal com fio de brilho especial. Acompanha caminho de mesa central vermelho com barrado trabalhado em arabescos vazados e sousplats redondos com flor central em alto relevo 3D nas cores vermelho e verde musgo.",
+    "detalhes": [
+      "Confeccionado artesanalmente em fio de qualidade premium com fios de brilho",
+      "Caminho de mesa vermelho central com acabamento rendado e arabescos",
+      "Sousplats redondos com flor em crochê 3D aplicada em alto relevo",
+      "Combinação clássica natalina em tons de vermelho rubi e verde esmeralda",
+      "Pode ser encomendado completo (caminho + sousplats) ou peças avulsas"
+    ],
+    "imagemCapa": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/92ae707d-2ac2-47b5-8032-e1dbc489caed.jpeg",
+    "fotos": [
+      {
+        "angulo": "Mesa Completa",
+        "legenda": "Mesa posta montada com o conjunto completo de Natal (caminho e 6 sousplats com flor)",
+        "url": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/92ae707d-2ac2-47b5-8032-e1dbc489caed.jpeg"
+      },
+      {
+        "angulo": "Caminho de Mesa",
+        "legenda": "Visão do caminho de mesa central vermelho com detalhes em relevo e brilho",
+        "url": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/12d6203e-b827-4687-a14f-9e967188ed63.jpeg"
+      },
+      {
+        "angulo": "Sousplat Vermelho",
+        "legenda": "Sousplat natalino vermelho com flor central verde em alto relevo e fio de brilho",
+        "url": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/9c6d4b6d-91b3-409a-9f62-cb5c3051569b.jpeg"
+      },
+      {
+        "angulo": "Sousplat Verde",
+        "legenda": "Sousplat natalino verde musgo com flor central em alto relevo e barrado rendado",
+        "url": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/b675c4be-e576-4263-9a35-36c897c3f4b0.jpeg"
+      }
+    ]
+  },
+  {
+    "id": "sousplat-papai-noel",
+    "nome": "Sousplat & Jogo Americano Papai Noel em Crochê",
+    "subtitulo": "Charme e alegria para a ceia de Natal com o rosto do Papai Noel em crochê e relevo",
+    "categoria": "Mesa Posta & Decoração",
+    "tag": "Lançamento",
+    "destaque": true,
+    "disponibilidade": "Sob encomenda",
+    "descricao": "Peça natalina encantadora para transformar a decoração da mesa de Natal. Confeccionado em crochê com riqueza de detalhes: gorro vermelho dobrado com pompom branco, barba volumosa trabalhada em ponto relevo/pipoca, bigode e olhinhos expressivos. Ideal para receber a família e encantar na ceia de Natal.",
+    "detalhes": [
+      "Modelagem exclusiva do Papai Noel 100% feita à mão em crochê",
+      "Gorro natalino vermelho com dobra charmosa e pompom branco fofinho",
+      "Barba trabalhada com textura especial em relevo e acabamento rendado",
+      "Perfeito para jogos americanos de Natal, sousplat para pratos ou centro decorativo",
+      "Disponível sob encomenda por unidade ou em kits personalizados"
+    ],
+    "imagemCapa": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/9c94a0e3-da28-473f-a409-98ab537f082c.jpeg",
+    "fotos": [
+      {
+        "angulo": "Frente",
+        "legenda": "Visão frontal do sousplat Papai Noel em crochê na mesa rústica com árvore iluminada",
+        "url": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/9c94a0e3-da28-473f-a409-98ab537f082c.jpeg"
+      },
+      {
+        "angulo": "Mesa Posta (Flat Lay)",
+        "legenda": "Visão aérea da mesa posta natalina com sousplat Papai Noel, talheres e arranjo de Natal",
+        "url": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/324f9ee0-4a53-422c-8b17-555c28f4c6ae.jpeg"
+      },
+      {
+        "angulo": "Detalhes (Macro)",
+        "legenda": "Close-up na textura do crochê, pompom felpudo do gorro e relevo da barba e bigode",
+        "url": "https://fb-integrador-vehicle-images.s3.sa-east-1.amazonaws.com/08814058-a032-40d4-8fc9-f1a1d5de315b.jpeg"
+      }
+    ]
   }
 ]

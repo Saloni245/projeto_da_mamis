@@ -13,10 +13,10 @@ describe('ProductService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('deve carregar todas as 8 bonecas cadastradas no JSON estático', () => {
+  it('deve carregar todas as 10 peças artesanais cadastradas no JSON estático', () => {
     const bonecas = service.getAllBonecas();
     expect(bonecas).toBeDefined();
-    expect(bonecas.length).toBe(8);
+    expect(bonecas.length).toBe(10);
 
     const ids = bonecas.map(b => b.id);
     expect(ids).toEqual([
@@ -28,12 +28,14 @@ describe('ProductService', () => {
       'boneca-camponesa-chapeu',
       'boneca-pendulo-chaveiro',
       'boneca-boina-docura',
+      'jogo-mesa-posta-natalina',
+      'sousplat-papai-noel',
     ]);
   });
 
-  it('deve retornar todas as bonecas marcadas em destaque em getFeaturedBonecas()', () => {
+  it('deve retornar todas as peças marcadas em destaque em getFeaturedBonecas()', () => {
     const destaques = service.getFeaturedBonecas();
-    expect(destaques.length).toBe(8);
+    expect(destaques.length).toBe(10);
     destaques.forEach(boneca => {
       expect(boneca.destaque).toBe(true);
     });
